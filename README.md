@@ -14,17 +14,17 @@ This script allows you to execute commands on multiple servers listed in a file,
 
 ## Installation
 
-1. Save the script content as `08-remote-execution.sh`.
+1. Save the script content as `08_remote_execution.sh`.
 2. Grant executable permissions to the script:
 
    ```bash
-   chmod +x 08-remote-execution.sh
+   chmod +x 08_remote_execution.sh
    ```
 
 ## Usage
 
 ```bash
-./08-remote-execution.sh [-vsn] [-f SERVER_FILE] COMMAND
+./08_remote_execution.sh [-vsn] [-f SERVER_FILE] COMMAND
 ```
 
 ### Options
@@ -44,19 +44,19 @@ The script expects a file containing a list of server hostnames (one per line). 
 1. Update package lists on all servers (dry run):
 
    ```bash
-   ./08-remote-execution.sh -n apt update
+   ./08_remote_execution.sh -n apt update
    ```
 
 2. Reboot all servers with root privileges:
 
    ```bash
-   ./08-remote-execution.sh -s reboot
+   ./08_remote_execution.sh -s reboot
    ```
 
 3. Run a custom command with verbosity enabled:
 
    ```bash
-   ./08-remote-execution.sh -v df -h
+   ./08_remote_execution.sh -v df -h
    ```
 
 ## Script Details
