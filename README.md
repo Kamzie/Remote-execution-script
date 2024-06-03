@@ -14,17 +14,17 @@ This script allows you to execute commands on multiple servers listed in a file,
 
 ## Installation
 
-1. Save the script content as `multi_server_command_runner.sh`.
+1. Save the script content as `08-remote-execution.sh`.
 2. Grant executable permissions to the script:
 
    ```bash
-   chmod +x multi_server_command_runner.sh
+   chmod +x 08-remote-execution.sh
    ```
 
 ## Usage
 
 ```bash
-./multi_server_command_runner.sh [-vsn] [-f SERVER_FILE] COMMAND
+./08-remote-execution.sh [-vsn] [-f SERVER_FILE] COMMAND
 ```
 
 ### Options
@@ -44,19 +44,19 @@ The script expects a file containing a list of server hostnames (one per line). 
 1. Update package lists on all servers (dry run):
 
    ```bash
-   ./multi_server_command_runner.sh -n apt update
+   ./08-remote-execution.sh -n apt update
    ```
 
 2. Reboot all servers with root privileges:
 
    ```bash
-   ./multi_server_command_runner.sh -s reboot
+   ./08-remote-execution.sh -s reboot
    ```
 
 3. Run a custom command with verbosity enabled:
 
    ```bash
-   ./multi_server_command_runner.sh -v df -h
+   ./08-remote-execution.sh -v df -h
    ```
 
 ## Script Details
