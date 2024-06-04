@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Default list of servers.
-SERVER_FILE='/vagrant/servers'
+SERVER_FILE='/vagrant/06_own_servers'
 
 # Function to display usage options
 usage() {
