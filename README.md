@@ -12,6 +12,10 @@ This script allows you to execute commands on multiple servers listed in a file,
 - Perform a dry run to simulate execution without actually running commands (using `-n` flag).
 - Specify a custom server file location using the `-f` flag.
 
+## Prerequisites
+
+This script assumes you've already established SSH key-based authentication on your servers. This involves generating an SSH key pair on your main PC using `ssh-keygen` and distributing the public key to each server using `ssh-copy-id`. This allows the script to connect to the servers without requiring a password for each execution.
+
 ## Installation
 
 1. Save the script content as `08_remote_execution.sh`.
@@ -20,6 +24,10 @@ This script allows you to execute commands on multiple servers listed in a file,
    ```bash
    chmod +x 08_remote_execution.sh
    ```
+
+## Server File
+
+The script expects a file containing a list of server hostnames, one per line. By default, it looks for a file named servers located at /vagrant/servers. You can modify the script to use a different file location using the -f option (see Usage section below).
 
 ## Usage
 
@@ -34,10 +42,6 @@ This script allows you to execute commands on multiple servers listed in a file,
 - `-n`: Performs a dry run, simulating command execution without actually running them.
 - `-f SERVER_FILE`: Specifies a custom server file location. (Default: `/vagrant/servers`)
 - `COMMAND`: The command you want to execute on all the servers. (Required)
-
-### Server File
-
-The script expects a file containing a list of server hostnames (one per line). By default, it looks for a file named `servers` located at `/vagrant/servers`.
 
 ### Example Usage
 
@@ -61,6 +65,10 @@ The script expects a file containing a list of server hostnames (one per line). 
 
 ## Script Details
 
+### Security
+
+- Using the `-s` option grants root privileges on remote servers. **Use this option with caution and only on trusted systems.** Make sure you've properly set up SSH key-based authentication before using this script.
+
 ### Error Handling
 
 - The script checks if the `SERVER_FILE` exists and is readable. If not, it outputs an error message and exits.
@@ -73,5 +81,9 @@ The script expects a file containing a list of server hostnames (one per line). 
 - When verbosity is enabled (`-v`), the script logs messages indicating successful connections and command execution.
 - In dry run mode (`-n`), the script simulates the command execution and logs the intended actions without performing them.
 - Error messages are sent to standard error (`stderr`) to distinguish them from regular output.
+
+### Customization
+
+- You can modify the script to suit your specific needs, such as changing the default server file location or adding functionalities.
 
 This script provides a convenient way to manage and execute commands on multiple servers simultaneously. Remember to adjust the script and server file according to your environment and security best practices.
