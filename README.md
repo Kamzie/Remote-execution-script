@@ -18,21 +18,21 @@ This script assumes you've already established SSH key-based authentication on y
 
 ## Installation
 
-1. Save the script content as `08_remote_execution.sh`.
+1. Save the script content as `06_remote_execution.sh`.
 2. Grant executable permissions to the script:
 
    ```bash
-   chmod +x 08_remote_execution.sh
+   chmod +x 06_remote_execution.sh
    ```
 
 ## Server File
 
-The script expects a file containing a list of server hostnames, one per line. By default, it looks for a file named servers located at /vagrant/servers. You can modify the script to use a different file location using the -f option (see Usage section below).
+The script expects a file containing a list of server hostnames, one per line. By default, it looks for a file named servers located at /vagrant/06_own_servers. You can modify the script to use a different file location using the -f option (see Usage section below).
 
 ## Usage
 
 ```bash
-./08_remote_execution.sh [-vsn] [-f SERVER_FILE] COMMAND
+./06_remote_execution.sh [-vsn] [-f SERVER_FILE] COMMAND
 ```
 
 ### Options
@@ -48,19 +48,19 @@ The script expects a file containing a list of server hostnames, one per line. B
 1. Update package lists on all servers (dry run):
 
    ```bash
-   ./08_remote_execution.sh -n apt update
+   ./06_remote_execution.sh -n apt update
    ```
 
 2. Reboot all servers with root privileges:
 
    ```bash
-   ./08_remote_execution.sh -s reboot
+   ./06_remote_execution.sh -s reboot
    ```
 
 3. Run a custom command with verbosity enabled:
 
    ```bash
-   ./08_remote_execution.sh -v df -h
+   ./06_remote_execution.sh -v df -h
    ```
 
 ## Script Details
