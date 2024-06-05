@@ -27,7 +27,9 @@ This script assumes you've already established SSH key-based authentication on y
 
 ## Server File
 
-The script expects a file containing a list of server hostnames, one per line. By default, it looks for a file named servers located at /vagrant/06_own_servers. You can modify the script to use a different file location using the -f option (see Usage section below).
+The script expects a file containing a list of server hostnames, with one hostname per line. Initially, hostnames were added to the server file using the command echo 'ip server01' | sudo tee -a /etc/hosts. While this approach is suitable for small setups, a more scalable naming convention is recommended for larger organizations. For example, using region-based or function-based names such as us-east-server1, eu-west-server2, database-server, or web-server1 would be more effective.
+
+By default, the script looks for a file named servers located at /vagrant/06_own_servers. You can modify the script to use a different file location by using the -f option (see the Usage section below).
 
 ## Usage
 
@@ -51,17 +53,23 @@ The script expects a file containing a list of server hostnames, one per line. B
    ./06_remote_execution.sh -n apt update
    ```
 
+   ![Screenshot of a terminal window displaying the 06_remote_execution.sh script performing a dry run](./dry_run.png)
+
 2. Reboot all servers with root privileges:
 
    ```bash
-   ./06_remote_execution.sh -s reboot
+   ./06_remote_execution.sh -v -s useradd john
    ```
+
+   ![Screenshot of a terminal window displaying the 06_remote_execution.sh script creating a new user called john](./create_user.png)
 
 3. Run a custom command with verbosity enabled:
 
    ```bash
-   ./06_remote_execution.sh -v df -h
+   ./06_remote_execution.sh -v id john
    ```
+
+   ![Screenshot of a terminal window displaying the 06_remote_execution.sh script showing the id of user john](./id_user.png)
 
 ## Script Details
 
