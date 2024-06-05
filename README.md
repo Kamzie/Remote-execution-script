@@ -55,7 +55,7 @@ By default, the script looks for a file named 06_own_servers located at `/vagran
 
    ![Screenshot of a terminal window displaying the 06_remote_execution.sh script performing a dry run](./dry_run.png)
 
-2. Reboot all servers with root privileges:
+2. Add a new user with root privileges with verbosity enabled:
 
    ```bash
    ./06_remote_execution.sh -v -s useradd john
@@ -63,7 +63,7 @@ By default, the script looks for a file named 06_own_servers located at `/vagran
 
    ![Screenshot of a terminal window displaying the 06_remote_execution.sh script creating a new user called john](./create_user.png)
 
-3. Run a custom command with verbosity enabled:
+3. Check the user id with verbosity enabled:
 
    ```bash
    ./06_remote_execution.sh -v id john
