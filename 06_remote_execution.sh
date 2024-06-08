@@ -19,8 +19,8 @@ Options:
 Examples:
   ${0} -v uptime
   ${0} -v -s useradd user1
-  ${0} -v -f 'alternate server file' uptime
-  ${0} -n -f 'alternate server file' cat /etc/passwd
+  ${0} -v -f /path/to/server_file uptime
+  ${0} -n -f /path/to/server_file cat /etc/passwd
 
 Notes:
   - This script requires a server file; the default list is stored in ${SERVER_FILE}.
