@@ -5,12 +5,29 @@ SERVER_FILE='/vagrant/06_own_servers'
 
 # Function to display usage options
 usage() {
-    echo "Usage: ${0} [-vsn] [-f SERVER_FILE] COMMAND" >&2
-    echo '-v	    Increase verbosity. Display server name before executing command.'
-    echo '-s	    Enable root privileges on the remote server.'
-    echo '-n	    Allow dry run.'
-    echo '-f	    Specify server file. Default ${SERVER_FILE}.'
-    echo "COMMAND   executes a single command on every server".
+  cat << EOF
+
+Usage: ${0} [-vsn] [-f SERVER_FILE] COMMAND
+
+Options:
+  -v              Optional: Increase verbosity. Display server name before executing command.
+  -s              Optional: Enable root privileges on the remote server.
+  -n              Optional: Allow dry run.
+  -f SERVER_FILE  Optional: Specify an alternate server file.
+  COMMAND         Required: Executes a single command on every server.
+
+Examples:
+  ${0} -v uptime
+  ${0} -v -s useradd user1
+  ${0} -v -f 'alternate server file' uptime
+  ${0} -n -f 'alternate server file' cat /etc/passwd
+
+Notes:
+  - This script requires a server file; the default list is stored in ${SERVER_FILE}.
+  - Options -v, -s, -n, and -f are optional.
+  - COMMAND is required.
+
+EOF
     exit 1  
 }
 
