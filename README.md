@@ -18,24 +18,24 @@ This script assumes you've already established SSH key-based authentication on y
 
 ## Installation
 
-1. Save the script content as `06_remote_execution.sh`.
-2. Save the server file as `06_own_servers`.
+1. Save the script content as `remote_execution.sh`.
+2. Save the server file as `own_servers`.
 3. Grant executable permissions to the script:
 
    ```bash
-   chmod +x 06_remote_execution.sh
+   chmod +x remote_execution.sh
    ```
 
 ## Server File
 
 The script expects a file containing a list of server hostnames, with one hostname per line. Initially, hostnames were added to the server file using the command `echo 'ip server01' | sudo tee -a /etc/hosts`. While this approach is suitable for small setups, a more scalable naming convention is recommended for larger organizations. For example, using region-based or function-based names such as `us-east-server1`, `eu-west-server2`, `database-server`, or `web-server1` would be more effective.
 
-By default, the script looks for a file named `06_own_servers` located at `/vagrant/06_own_servers`. You can modify the script to use a different file location by using the `-f` option (see the Usage section below).
+By default, the script looks for a file named `own_servers` located at `/vagrant/own_servers`. You can modify the script to use a different file location by using the `-f` option (see the Usage section below).
 
 ## Usage
 
 ```bash
-./06_remote_execution.sh [-vsn] [-f SERVER_FILE] COMMAND
+./remote_execution.sh [-vsn] [-f SERVER_FILE] COMMAND
 ```
 
 ### Options
@@ -51,26 +51,26 @@ By default, the script looks for a file named `06_own_servers` located at `/vagr
 1. Update package lists on all servers (dry run):
 
    ```bash
-   ./06_remote_execution.sh -n apt update
+   ./remote_execution.sh -n apt update
    ```
 
-   ![Screenshot of a terminal window displaying the 06_remote_execution.sh script performing a dry run](./dry_run.png)
+   ![Screenshot of a terminal window displaying the remote_execution.sh script performing a dry run](./dry_run.png)
 
 2. Add a new user with root privileges with verbosity enabled:
 
    ```bash
-   ./06_remote_execution.sh -v -s useradd john
+   ./remote_execution.sh -v -s useradd john
    ```
 
-   ![Screenshot of a terminal window displaying the 06_remote_execution.sh script creating a new user called john](./create_user.png)
+   ![Screenshot of a terminal window displaying the remote_execution.sh script creating a new user called john](./create_user.png)
 
 3. Check the user id with verbosity enabled:
 
    ```bash
-   ./06_remote_execution.sh -v id john
+   ./remote_execution.sh -v id john
    ```
 
-   ![Screenshot of a terminal window displaying the 06_remote_execution.sh script showing the id of user john](./id_user.png)
+   ![Screenshot of a terminal window displaying the remote_execution.sh script showing the id of user john](./id_user.png)
 
 ## Script Details
 
